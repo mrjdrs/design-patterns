@@ -7,7 +7,7 @@ import java.util.Map;
  * @author zhoude
  * @date 2020/4/5 20:43
  */
-public class FruiteFacoryMap {
+public class FruitFactoryMap {
 
     private static final Map<String, IFruitFactory> FRUIT_MAP = new HashMap<>();
 

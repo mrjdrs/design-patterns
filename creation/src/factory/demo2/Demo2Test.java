@@ -9,11 +9,11 @@ import factory.IFruit;
 public class Demo2Test {
 
     public static void main(String[] args) {
-        IFruitFactory appleFactory = FruiteFacoryMap.createFruitFactory("apple");
+        IFruitFactory appleFactory = FruitFactoryMap.createFruitFactory("apple");
         IFruit apple = appleFactory.createFruit();
         System.err.println(apple.getColor());
 
-        IFruitFactory bananaFactory = FruiteFacoryMap.createFruitFactory("banana");
+        IFruitFactory bananaFactory = FruitFactoryMap.createFruitFactory("banana");
         IFruit banana = bananaFactory.createFruit();
         System.err.println(banana.getColor());
     }

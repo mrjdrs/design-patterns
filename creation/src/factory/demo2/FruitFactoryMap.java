@@ -9,6 +9,9 @@ import java.util.Map;
  */
 public class FruitFactoryMap {
 
+    /**
+     * 利用map优化createFruitFactory函数
+     */
     private static final Map<String, IFruitFactory> FRUIT_MAP = new HashMap<>();
 
     static {

@@ -16,7 +16,7 @@ public class HandlerChain {
 
     public void handler() {
         for (IHandler handler : chain) {
-            boolean handled = handler.hanlder();
+            boolean handled = handler.handler();
             if (handled) {
                 break;
             }

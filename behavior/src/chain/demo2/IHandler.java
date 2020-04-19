@@ -12,5 +12,5 @@ public interface IHandler {
      *
      * @return true=处理成功，false=未处理完成，待后续链路处理
      */
-    boolean hanlder();
+    boolean handler();
 }

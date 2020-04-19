@@ -6,7 +6,7 @@ package chain.demo2;
  */
 public class HandlerB implements IHandler {
     @Override
-    public boolean hanlder() {
+    public boolean handler() {
         System.err.println("这里是HandlerB的处理逻辑");
         return false;
     }

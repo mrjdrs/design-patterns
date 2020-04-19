@@ -1,6 +1,8 @@
 package strategy.demo2;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 排序类
@@ -13,6 +15,14 @@ public class Sorter {
     private static final long QUICK_SORT_SIZE = 6 * GB;
     private static final long EXTERNAL_SORT_SIZE = 10 * GB;
     private static final long CONCURRENT_EXTERNAL_SORT_SIZE = 100 * GB;
+    private static final List<AlgorithmRange> RANGE_LIST = new ArrayList<>();
+
+    static {
+        RANGE_LIST.add(new AlgorithmRange(0, QUICK_SORT_SIZE, SortAlgorithmFactory.getSortAlgorithm("quickSort")));
+        RANGE_LIST.add(new AlgorithmRange(QUICK_SORT_SIZE, EXTERNAL_SORT_SIZE, SortAlgorithmFactory.getSortAlgorithm("externalSort")));
+        RANGE_LIST.add(new AlgorithmRange(EXTERNAL_SORT_SIZE, CONCURRENT_EXTERNAL_SORT_SIZE, SortAlgorithmFactory.getSortAlgorithm("concurrentExternalSort")));
+        RANGE_LIST.add(new AlgorithmRange(CONCURRENT_EXTERNAL_SORT_SIZE, CONCURRENT_EXTERNAL_SORT_SIZE, SortAlgorithmFactory.getSortAlgorithm("mapreduceSort")));
+    }
 
     /**
      * 获取文件排序策略类
@@ -23,17 +33,14 @@ public class Sorter {
     public void sort(String filePath) {
         File file = new File(filePath);
         long fileSize = file.length();
-
-        ISortAlgorithm sortAlgorithm;
-        if (fileSize < QUICK_SORT_SIZE) {
-            sortAlgorithm = SortAlgorithmFactory.getSortAlgorithm("quickSort");
-        } else if (fileSize < EXTERNAL_SORT_SIZE) {
-            sortAlgorithm = SortAlgorithmFactory.getSortAlgorithm("externalSort");
-        } else if (fileSize < CONCURRENT_EXTERNAL_SORT_SIZE) {
-            sortAlgorithm = SortAlgorithmFactory.getSortAlgorithm("concurrentExternalSort");
-        } else {
-            sortAlgorithm = SortAlgorithmFactory.getSortAlgorithm("mapreduceSort");
+        ISortAlgorithm sortAlgorithm = null;
+        for (AlgorithmRange range : RANGE_LIST) {
+            if (range.inRange(fileSize)) {
+                sortAlgorithm = range.getSortAlgorithm();
+                break;
+            }
         }
+        assert sortAlgorithm != null;
         sortAlgorithm.sort(filePath);
     }
 }

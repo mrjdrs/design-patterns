@@ -1,4 +1,4 @@
-package chain;
+package chain.demo1;
 
 /**
  * 处理链路

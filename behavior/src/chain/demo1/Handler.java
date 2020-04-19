@@ -1,4 +1,4 @@
-package chain;
+package chain.demo1;
 
 /**
  * 职责连-抽象类

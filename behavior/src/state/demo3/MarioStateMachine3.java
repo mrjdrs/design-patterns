@@ -1,7 +1,7 @@
 package state.demo3;
 
 /**
- * 查表法
+ * 状态模式（可以通过单例模式优化）
  *
  * @author zhoude
  * @date 2020/4/20 22:36

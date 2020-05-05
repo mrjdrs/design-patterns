@@ -25,7 +25,7 @@ public class Test {
         Properties properties = new Properties();
         properties.load(new FileInputStream("behavior/src/strategy/strategy.properties"));
         String type = properties.getProperty("strategy.config");
-        Strategy strategy = StrategyFactoryCache.getStrateg(type);
+        Strategy strategy = StrategyFactoryCache.getStrategy(type);
         strategy.algorithmInterface();
     }
 
@@ -33,7 +33,7 @@ public class Test {
      * 静态指定策略类
      */
     private static void staticLoad() {
-        Strategy strategy = StrategyFactory.getStrateg("B");
+        Strategy strategy = StrategyFactory.getStrategy("B");
         if (strategy != null) {
             strategy.algorithmInterface();
         }

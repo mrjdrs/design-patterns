@@ -8,7 +8,7 @@ package strategy.demo1;
  * @date 2020/4/18 19:07
  */
 public class StrategyFactory {
-    public static Strategy getStrateg(String type) {
+    public static Strategy getStrategy(String type) {
         if (type == null || type.isEmpty()) {
             throw new IllegalArgumentException("type should not be empty.");
         }

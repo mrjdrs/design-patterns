@@ -18,7 +18,7 @@ public class StrategyFactoryCache {
         STRATEGIES.put("B", new ConcreteStrategyB());
     }
 
-    public static Strategy getStrateg(String type) {
+    public static Strategy getStrategy(String type) {
         if (type == null || type.isEmpty()) {
             throw new IllegalArgumentException("type should not be empty.");
         }
